@@ -1,16 +1,17 @@
 class BooksController < ApplicationController
   before_action :find_book, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
   
   def index
-  	@book = Book.all
+  	@books = Book.all
   end
 
   def new
-  	@book = Book.new
+  	@book = current_user.books.build
   end
 
   def create
-  	@book = Book.new(books_params)
+  	@book = current_user.books.build(books_params)
 
   	if @book.save
   		redirect_to root_path, notice: "Книга успешно добавлена"
@@ -44,6 +45,6 @@ class BooksController < ApplicationController
   end
 
   def books_params
-  	params.require(:book).permit(:title, :description)
+  	params.require(:book).permit(:title, :description, :image)
   end
 end
