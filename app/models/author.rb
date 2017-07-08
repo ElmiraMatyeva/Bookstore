@@ -1,5 +1,4 @@
 class Author < ApplicationRecord
-	has_many :reviews, as: :commentable
-	has_many :books, dependent: :destroy
-
+	has_many :copyrights
+    has_many :books, through: :copyrights
 end

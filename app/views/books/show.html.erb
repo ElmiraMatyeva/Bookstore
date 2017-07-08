@@ -3,16 +3,12 @@
     <div class="row">
       <div class="col-md-4">
         <%= image_tag @book.image.url(:medium) %>
+        <div class="star-rating" data-score= <%= @avg_review %>></div>
+        <em><%= "#{@reviews.length} reviews" %></em>
+        
         <div class="table-responsive">
           <table class="table">
             <tbody>
-
-            <tr>
-              <td>
-                Рейтинг: <%= rating_for @book, 'rating', star: 5, disable_after_rate: true%>
-              </td>
-            </tr>
-            <div class="star-rating" data-score= <%= review.rating %></div>
 
               <tr>
                 <td><strong>Название:</strong></td>
@@ -26,6 +22,7 @@
                 <td><strong>Описание:</strong></td>
                 <td><%= @book.description %></td>
               </tr>
+
               <tr>
                 <td><strong>Добавлена пользователем:</strong></td>
                 <td><%= @book.user.email %></td>
@@ -47,10 +44,14 @@
           <% else %>
                 <% @reviews.each do |review| %>
                      <div class="reviews">
+                     <div class="star-rating" data-score= <%= review.rating %></div>
                      <p><%= review.description %></p>
              </div>
           <% end %>
         <% end %>
+
+  <%= link_to 'Edit', edit_book_path(@book) %> | 
+  <%= link_to 'Back', books_path %>
 
   <script>
   $('.star-rating').raty({

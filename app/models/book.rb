@@ -1,10 +1,13 @@
 class Book < ApplicationRecord
 	belongs_to :user
-	belongs_to :author
-	belongs_to :category
-	has_many :reviews, as: :commentable
+	has_many :copyrights
+	has_many :authors
+	has_many :authors, through: :copyrights
+	has_many :books_categories
+	has_many :categories, through: :books_categories
+	has_many :reviews
 	
-	has_attached_file :image, styles: { medium: '300*300#', thumb: '100x100>' }, default_url: '/images/:style/missing.png' 
+	has_attached_file :image, styles: { medium: "400*600#"} 
 	validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
 	ratyrate_rateable "rating"

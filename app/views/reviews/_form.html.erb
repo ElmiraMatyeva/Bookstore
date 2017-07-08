@@ -1,6 +1,26 @@
 <%= simple_form_for([@book, @review]) do |f| %>
+  <% if @review.errors.any? %>
+  <div id="error_explanation">
+  	<h2>Не получилось добавить отзыв, причина - <%= pluralize(@review.errors.count, "error") %> </h2>
+  	<ul>
+  		<% @review.errors.full_messages.each do |message| %>
+  		<li><%= message %></li>
+  		<% end %>
+  	</ul>	
+  </div>	
+	<% end %>
 
-   <div class="form-inputs">
+	<div class="field">
+		<div id="star-rating">
+			
+		</div>
+	</div>
+
+  <div class="form-inputs">
+      <%= f.text_field :rating, label: "Рейтинг" %>
+  </div>
+
+  <div class="form-inputs">
       <%= f.text_field :description, label: "Ваш отзыв" %>
   </div>
   <p>
@@ -9,3 +29,10 @@
   </div>
   </p>
 <% end %>
+
+<script>
+	$('#star-rating').raty({
+		path: '/assets',
+		scoreName: 'review[rating]'
+	});
+</script>
