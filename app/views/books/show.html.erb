@@ -11,9 +11,35 @@
                 <td><%= @book.title %></td>
               </tr>
               <tr>
+                <td><strong> Автор:</strong></td>
+                <td><%= @book.author %></td>
+              </tr>
+              <tr>
                 <td><strong>Описание:</strong></td>
                 <td><%= @book.description %></td>
+              </tr>
+              <tr>
+                <td><strong>Добавлена пользователем:</strong></td>
+                <td><%= @book.user.email %></td>
               </tr>
               
             </tbody>
           </table>
+
+          <%= link_to "Оставить отзыв!", new_book_review_path(@book) %>
+        </div>
+      </div>
+      <div class="col-md-7 col-md-offset-1">
+          <h1 class="review_title"><%= @book.title %></h1>
+          <p><%= @book.description %></p>
+
+        <% if @reviews.blank? %>
+            <h3>Ни одного отзыва еще не оставлено, хотите стать первым?</h3>
+            <%= link_to "Да!", new_book_review_path(@book), class: "btn btn-danger" %>
+          <% else %>
+                <% @reviews.each do |review| %>
+                     <div class="reviews">
+                     <p><%= review.description %></p>
+             </div>
+          <% end %>
+        <% end %>

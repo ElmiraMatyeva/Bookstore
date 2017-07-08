@@ -14,7 +14,7 @@ class BooksController < ApplicationController
   	@book = current_user.books.build(books_params)
 
   	if @book.save
-  		redirect_to root_path, notice: "Книга успешно добавлена"
+  		redirect_to @book, notice: "Книга успешно добавлена"
   	else
   		render 'new'
   	end
@@ -29,7 +29,7 @@ class BooksController < ApplicationController
 
   def update
   	if @book.update(books_params)
-			redirect_to root_path, notice: "Изменения успешно сохранены"
+			redirect_to @book, notice: "Изменения успешно сохранены"
 		else
 			render 'edit'
 		end
@@ -46,6 +46,6 @@ class BooksController < ApplicationController
   end
 
   def books_params
-  	params.require(:book).permit(:title, :description, :image)
+  	params.require(:book).permit(:title, :description, :image, :author)
   end
 end

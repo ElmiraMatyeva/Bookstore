@@ -18,6 +18,7 @@ gem 'bootstrap-sass'
 gem 'jquery-rails'
 gem 'devise'
 gem 'paperclip'
+gem 'pry'
 
 
 group :development, :test do

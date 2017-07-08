@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170708084921) do
+ActiveRecord::Schema.define(version: 20170708110201) do
 
   create_table "authors", force: :cascade do |t|
     t.string "name"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20170708084921) do
     t.integer "image_file_size"
     t.datetime "image_updated_at"
     t.integer "author_id"
+    t.integer "category_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -45,6 +46,7 @@ ActiveRecord::Schema.define(version: 20170708084921) do
     t.integer "user_id"
     t.integer "commentable_id"
     t.string "commentable_type"
+    t.index ["commentable_id", "commentable_type"], name: "index_reviews_on_commentable_id_and_commentable_type"
   end
 
   create_table "users", force: :cascade do |t|

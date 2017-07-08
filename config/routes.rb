@@ -1,14 +1,10 @@
 Rails.application.routes.draw do
-  get 'reviews/index'
+	
+	devise_for :users
 
-  get 'reviews/new'
-
-  get 'reviews/show'
-
-  get 'reviews/edit'
-
-  devise_for :users
- resources :books
- root 'books#index'
+	resources :books do
+		resources :reviews, except: [:show, :index]
+	end
+	root 'books#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
