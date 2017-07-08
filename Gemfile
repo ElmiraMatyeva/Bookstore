@@ -20,6 +20,7 @@ gem 'devise'
 gem 'paperclip'
 gem 'pry'
 gem 'activeadmin', '~> 1.0.0.pre2'
+gem 'ratyrate'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

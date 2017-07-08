@@ -6,6 +6,12 @@
         <div class="table-responsive">
           <table class="table">
             <tbody>
+
+            <tr>
+              <td>
+                Рейтинг: <%= rating_for @book, 'rating', star: 5, disable_after_rate: true%>
+              </td>
+            </tr>
               <tr>
                 <td><strong>Название:</strong></td>
                 <td><%= @book.title %></td>
