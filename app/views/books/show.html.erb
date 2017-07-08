@@ -12,6 +12,8 @@
                 Рейтинг: <%= rating_for @book, 'rating', star: 5, disable_after_rate: true%>
               </td>
             </tr>
+            <div class="star-rating" data-score= <%= review.rating %></div>
+
               <tr>
                 <td><strong>Название:</strong></td>
                 <td><%= @book.title %></td>
@@ -49,3 +51,13 @@
              </div>
           <% end %>
         <% end %>
+
+        <script>
+  $('.star-rating').raty({
+    path: '/assets/',
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    }
+  });
+</script>
