@@ -1,0 +1,29 @@
+<%= simple_form_for @book, html: { multipart: true } do |f| %>
+  <% if book.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
+
+      <ul>
+      <% book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.input :title, label: "Название" %>
+  </div>
+
+  <div class="field">
+    <%= f.input :description, label: "Описание" %>
+  </div>
+  
+  <div>
+    <%= f.input :image, as: :file, label: "Обложка" %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit, label: "Сохранить книгу" %>
+  </div>
+<% end %>

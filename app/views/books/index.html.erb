@@ -1,0 +1,18 @@
+<% if !user_signed_in? %>
+<div class="jumbotron">
+  <h1>Добро пожаловать в нашу электронную библиотеку!</h1>
+  <p>Зарегистрируйся и ты сможешь добавить книгу или атвора, а другие пользователи смогут оставлять твоим книгам отзывы с рейтингами! Мы также ждем и твои отзывы :)</p>
+  <p><%= link_to "Регистрация", new_user_registration_path, class: "btn btn-primary btn-lg" %></p>
+</div>
+<% end %>
+
+<div class="row">
+<h1>Все книги</h1>
+  <% @books.each do |book| %>
+  <div class="col-sm-6 col-md-3">
+    <div class="thumbnail">
+      <%= link_to (image_tag book.image.url(:medium), class: 'image'), book %>
+    </div>
+  </div>
+  <% end %>
+</div>
