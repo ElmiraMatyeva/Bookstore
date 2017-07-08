@@ -1,0 +1,8 @@
+<%= simple_form_for @category, html: { multipart: true } do |f| %>
+	  <div class="form-group text-center">
+          <%= f.text_field :title, label: 'Названеи категории', class: 'form-control'%>
+        </div>
+          <div class="form-group text-center">
+          <%= f.submit class: 'btn-success btn-block' %>
+        </div>
+<% end %>

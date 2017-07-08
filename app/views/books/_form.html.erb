@@ -12,6 +12,14 @@
   <% end %>
 
   <div class="field">
+    <%= f.association :category, label: "Категория" %>
+  </div>
+
+   <div class="field">
+    <%= f.association :author, label: "Автор"%>
+  </div>
+
+  <div class="field">
     <%= f.input :title, label: "Название" %>
   </div>
 
@@ -23,7 +31,17 @@
     <%= f.input :image, as: :file, label: "Обложка" %>
   </div>
 
+  <div class="form-group text-center">
+     <%= f.hidden_field :user_id, value: current_user.id %>
+  </div>
+
+  <div class="form-group text-center">
+    <strong>Я ознакомился с условиями!</strong>
+    <%= f.check_box :terms, {checked: false} %>
+  </div>
+
   <div class="actions">
     <%= f.button :submit, label: "Сохранить книгу" %>
   </div>
+
 <% end %>

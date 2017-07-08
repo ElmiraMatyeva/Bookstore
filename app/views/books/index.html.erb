@@ -6,8 +6,28 @@
 </div>
 <% end %>
 
-<div class="row">
-<h1>Все книги</h1>
+<div id="wrapper">
+  <div id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+      <li class="nav-header">Категории книг</li>
+                <% Category.all.each do |category|  %>
+                    <li class="active"><%= link_to category.title, books_path(category: category.title), class: 'link' %> 
+            </li>
+            <% end %>
+            <li class="nav-header">Авторы</li>
+                <% Author.all.each do |author|  %>
+                    <li><%= link_to author.name, books_path(author: author.name), class: 'link' %>  </li>
+            <% end %>
+    </ul>
+  </div>
+
+</div>
+  
+
+<div id="page-content-wrapper">
+<div class="container-fluid">
+  <div class="row">
+    <h1>Все книги</h1>
   <% @books.each do |book| %>
   <div class="col-sm-6 col-md-3">
     <div class="thumbnail">
@@ -18,4 +38,5 @@
     </div>
   </div>
   <% end %>
+  </div>
 </div>
