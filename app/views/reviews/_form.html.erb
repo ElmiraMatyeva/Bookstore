@@ -1,0 +1,10 @@
+<%= simple_form_for([@book, @review]) do |f| %>
+
+   <div class="form-inputs">
+      <%= f.text_field :description, label: "Ваш отзыв" %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

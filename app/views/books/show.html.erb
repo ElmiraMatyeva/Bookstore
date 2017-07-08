@@ -1,1 +1,19 @@
-<%= image_tag @book.image.url(:medium) %>
+ <div class="panel panel-default">
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-4">
+        <%= image_tag @book.image.url(:medium) %>
+        <div class="table-responsive">
+          <table class="table">
+            <tbody>
+              <tr>
+                <td><strong>Название:</strong></td>
+                <td><%= @book.title %></td>
+              </tr>
+              <tr>
+                <td><strong>Описание:</strong></td>
+                <td><%= @book.description %></td>
+              </tr>
+              
+            </tbody>
+          </table>
